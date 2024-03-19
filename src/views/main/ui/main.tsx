@@ -1,10 +1,11 @@
 import { ExchangersList } from "@/widgets/exchangersList";
+import { SideBar } from "@/widgets/sideBar";
 import { getExchangers } from "@/entities/exchanger";
 import styles from "./main.module.scss";
-import { SideBar } from "@/widgets/sideBar";
 
 export const Main = async () => {
   const exchangers = await getExchangers({ from: "btc", to: "sberrub" });
+
   return (
     <>
       {/* <SideBar /> */}

@@ -1,5 +1,5 @@
 "use client";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useRef } from "react";
 import { Categories } from "@/entities/categories";
 import { Tabs, TabsList, TabsTrigger } from "@/shared/ui";
 
@@ -11,9 +11,11 @@ type DirectionTabsProps = {
 export const DirectionTabs = memo((props: DirectionTabsProps) => {
   const { directions, directionExchange, setDirectionExchange } = props;
   const directionKeys = useMemo(() => Object.keys(directions || {}), [directions]);
-
+  const tabsRef = useRef<HTMLDivElement>(null);
+  console.log(tabsRef.current?.getBoundingClientRect());
   return (
     <Tabs
+      ref={tabsRef}
       onValueChange={(directionExchange) => setDirectionExchange(directionExchange)}
       value={directionExchange}
     >
